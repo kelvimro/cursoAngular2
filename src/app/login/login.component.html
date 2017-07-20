@@ -14,7 +14,7 @@
   </div>
   <h1>Login Usuario</h1>
 
-  <form [formGroup]="login">
+  <form [formGroup]="loginForm" (submit)="onSubmit()">
 
     <div class="form-group">
       <label for="nome">Name</label>
@@ -35,8 +35,8 @@
       </select>
     </div>
 
-    <button (click)="tteste(login)" type="submit" class="btn btn-success">Enviar</button>
+    <button type="submit" class="btn btn-success">Enviar</button>
   </form>
 
-  <h1>{{ login.value | json }}</h1>
+  <h1>{{ loginForm.value | json }}</h1>
 </div>
