@@ -1,16 +1,16 @@
 <style>
   .ng-valid[required], .ng-valid.required {
-    border-left: 5px solid #42A948; /* green */
+    border-left: 5px solid lawngreen; /* green */
   }
 
   .ng-invalid:not(form) {
-    border-left: 5px solid #a94442; /* red */
+    border-left: 5px solid red; /* red */
   }
 </style>
 
 <div class="container">
-  <div style="background-color:green" [hidden]="teste">
-    <br>
+  <div style="background-color:red" [hidden]="loginResult">
+    <h3>Login ou senha inválidos. </h3>
   </div>
   <h1>Login Usuario</h1>
 

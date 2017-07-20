@@ -4,25 +4,24 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { InicialComponent } from './inicial/inicial.component';
-import {ROUTING} from './app.routing';
-import {LoginService} from './servicos/login.service';
+import { AppRoutinModule } from './app.routing.module';
+import {LoginModule} from './login/login.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     InicialComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    ROUTING
+    LoginModule,
+    AppRoutinModule
   ],
-  exports: [  ],
-  providers: [ LoginService ],
+  exports: [ ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Usuario} from '../models/usuario';
 import {Sexo} from '../models/sexo.enum';
 import {FormControl, FormGroup} from '@angular/forms';
-import {LoginService} from '../servicos/login.service';
+import {LoginService} from './login.service';
 
 @Component({
   selector: 'kr-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   meuUsuario: Usuario[] = [];
   sexo: string[];
   loginForm: FormGroup;
-  teste: boolean;
+  loginResult: boolean;
 
   constructor(private loginService: LoginService) {
     // Inicializa o form group
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.teste = this.loginService.getAutenticacao({
+    if (this.loginResult = this.loginService.getAutenticacao({
       nome: this.loginForm.value.nome,
       senha: this.loginForm.value.senha
       })) {
