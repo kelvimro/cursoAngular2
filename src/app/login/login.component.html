@@ -1,0 +1,42 @@
+<style>
+  .ng-valid[required], .ng-valid.required {
+    border-left: 5px solid #42A948; /* green */
+  }
+
+  .ng-invalid:not(form) {
+    border-left: 5px solid #a94442; /* red */
+  }
+</style>
+
+<div class="container">
+  <div style="background-color:green" [hidden]="teste">
+    <br>
+  </div>
+  <h1>Login Usuario</h1>
+
+  <form [formGroup]="login">
+
+    <div class="form-group">
+      <label for="nome">Name</label>
+      <input type="text" class="form-control" id="nome" required
+             formControlName="nome">
+    </div>
+
+    <div class="form-group">
+      <label for="senha">Senha</label>
+      <input type="text" class="form-control" id="senha" required
+             formControlName="senha">
+    </div>
+
+    <div class="form-group">
+      <label for="sexo">Sexo</label>
+      <select class="form-control" id="sexo" required>
+        <option *ngFor="let s of sexo, let i = index" [value]=i>{{s}}</option>
+      </select>
+    </div>
+
+    <button (click)="tteste(login)" type="submit" class="btn btn-success">Enviar</button>
+  </form>
+
+  <h1>{{ login.value | json }}</h1>
+</div>
