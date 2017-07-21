@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { InicialComponent } from './inicial/inicial.component';
 /**
@@ -7,7 +6,6 @@ import { InicialComponent } from './inicial/inicial.component';
  */
 
 const appRotas: Routes = [
-  { path: 'login', component: LoginComponent },
   { path: '', component:  InicialComponent }
 ];
 
