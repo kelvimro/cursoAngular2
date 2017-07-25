@@ -7,7 +7,7 @@ import { InicialComponent } from './inicial/inicial.component';
 
 import { AppRoutinModule } from './app.routing.module';
 import { LoginModule } from './login/login.module';
-import { IngredientesModule } from './ingredientes/ingredientes.module';
+// import { IngredientesModule } from './ingredientes/ingredientes.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { IngredientesModule } from './ingredientes/ingredientes.module';
     FormsModule,
     ReactiveFormsModule,
     LoginModule,
-    IngredientesModule,
+    // IngredientesModule,
     AppRoutinModule
   ],
   exports: [ ],

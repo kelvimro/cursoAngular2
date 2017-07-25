@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Ingrediente} from '../../models/ingrediente';
 import {IngredientesService} from '../ingredientes.service';
 
@@ -9,11 +9,23 @@ import {IngredientesService} from '../ingredientes.service';
 })
 export class IngredientesListaComponent implements OnInit {
   public ingredientes: Ingrediente[] = [];
+  podeeditar: boolean;
 
-  constructor(private ingredientesService: IngredientesService) { }
+  constructor(private ingredientesService: IngredientesService) {
+    this.podeeditar = false;
+  }
 
   ngOnInit() {
     this.ingredientes = this.ingredientesService.getIngredientes;
+  }
+
+  deletarIngrediente(_id: number) {
+    this.ingredientesService.remove(_id);
+  }
+
+  editar() {
+    this.podeeditar = !this.podeeditar;
+    console.log(this.podeeditar);
   }
 
 }

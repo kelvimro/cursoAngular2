@@ -1,23 +1,33 @@
 /**
  * Created by kelvimro on 20/07/17.
  */
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
 import {IngredientesComponent} from './ingredientes.component';
 import {IngredientesListaComponent} from './ingredientes-lista/ingredientes-lista.component';
+import {IngredientesDetalhesComponent} from './ingredientes-detalhes/ingredientes-detalhes.component';
+import {NgForm} from '@angular/forms';
 /**
  * Created by kelvimro on 18/07/17.
  */
 
 const ingredientesRotas: Routes = [
-  { path: 'ingredientes', component: IngredientesComponent, children: [
-    {path: ':id', component: IngredientesListaComponent }
-  ]}
-];
+  {
+    path: '', component: IngredientesComponent, children: [
+    {
+      path: ':id', component: IngredientesListaComponent, children: [
+        {
+          path: 'editar', component: IngredientesDetalhesComponent
+        }]
+    }]
+}
+]
+;
 
 @NgModule({
-  imports: [ RouterModule.forChild(ingredientesRotas) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forChild(ingredientesRotas)],
+  exports: [RouterModule]
 })
 
-export class IngredientesRoutingModule {}
+export class IngredientesRoutingModule {
+}

@@ -6,7 +6,8 @@ import { InicialComponent } from './inicial/inicial.component';
  */
 
 const appRotas: Routes = [
-  { path: '', component:  InicialComponent }
+  { path: '', component:  InicialComponent },
+  { path: 'ingredientes', loadChildren: 'app/ingredientes/ingredientes.module#IngredientesModule'}
 ];
 
 @NgModule({

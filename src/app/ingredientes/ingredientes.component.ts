@@ -9,6 +9,7 @@ import {Ingrediente} from '../models/ingrediente';
 })
 export class IngredientesComponent implements OnInit {
   ingredientes: Ingrediente[] = [];
+  editar: boolean = false;
 
   constructor(private ingredientesService: IngredientesService) {
   }
@@ -25,10 +26,6 @@ export class IngredientesComponent implements OnInit {
         codigoBarras: 7898888899999
       }
     );
-  }
-
-  remove() {
-    console.log(this.ingredientesService.remove());
   }
 
 }
