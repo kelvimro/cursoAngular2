@@ -3,7 +3,7 @@ import {Ingrediente} from '../../models/ingrediente';
 import {NgForm} from '@angular/forms';
 import {IngredientesService} from '../ingredientes.service';
 import {Subscription} from 'rxjs/Subscription';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-ingredientes-detalhes',
@@ -11,21 +11,25 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./ingredientes-detalhes.component.css']
 })
 export class IngredientesDetalhesComponent implements OnInit, OnDestroy {
-  public ingrediente: Ingrediente;
+  ingrediente: Ingrediente;
   incricao: Subscription;
 
 
   constructor(private ingredientesService: IngredientesService,
-              private rota: ActivatedRoute) {
+              private rota: ActivatedRoute,
+              private roteador: Router) {
   }
 
   ngOnInit() {
     this.incricao = this.rota.params.subscribe(
-      (parametros: any) => {
-        let id = parametros['id'];
+      (params: any) => {
+        let id = params['id'];
+        console.log(id);
         this.ingrediente = this.ingredientesService.getIngrediente(id);
+        console.log(this.ingrediente);
       }
     );
+
   }
 
   ngOnDestroy() {
@@ -33,9 +37,10 @@ export class IngredientesDetalhesComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(_form: NgForm) {
-    console.log(_form);
     this.ingrediente = _form.form.value;
     this.ingredientesService.addIngredientes(this.ingrediente);
+    console.log(this.ingrediente);
+    this.roteador.navigate(['/ingredientes']);
   }
 
 }

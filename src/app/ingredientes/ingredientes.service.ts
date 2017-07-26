@@ -51,14 +51,19 @@ export class IngredientesService {
 
   getIngrediente(id: number): Ingrediente {
     for (let i of this.ingredientes) {
-      if (i.id === id) {
+      if (i.id == id) {
         return i;
       }
     }
-    return null;
+    return {
+      id: 0,
+      nome: '',
+      codigoBarras: null
+    };
   }
 
   public addIngredientes(i: Ingrediente): boolean {
+    i.id = this.ingredientes[this.ingredientes.length - 1].id + 1;
     this.ingredientes.push(i);
     return true;
   };

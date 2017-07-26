@@ -3,6 +3,7 @@ import {Usuario} from '../models/usuario';
 import {Sexo} from '../models/sexo.enum';
 import {FormControl, FormGroup} from '@angular/forms';
 import {LoginService} from './login.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'kr-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginResult: boolean;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService,
+              private roteador: Router) {
     // Inicializa o form group
     this.loginForm = new FormGroup({
       nome: new FormControl(),
@@ -26,13 +28,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginResult = this.loginService.getAutenticacao({
-      nome: this.loginForm.value.nome,
-      senha: this.loginForm.value.senha
+        nome: this.loginForm.value.nome,
+        senha: this.loginForm.value.senha
       })) {
-      console.log(' TRUE ');
+      this.roteador.navigate(['./ingredientes']);
     } else {
       console.log(' FALSE ');
-    };
+    }
+    ;
   }
 
   ngOnInit() {

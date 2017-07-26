@@ -12,16 +12,19 @@ import {NgForm} from '@angular/forms';
  */
 
 const ingredientesRotas: Routes = [
-  {
-    path: '', component: IngredientesComponent, children: [
     {
-      path: ':id', component: IngredientesListaComponent, children: [
+      path: '', component: IngredientesComponent, children: [
+      {
+        path: '', component: IngredientesListaComponent, children: [
         {
-          path: 'editar', component: IngredientesDetalhesComponent
+          path: 'adicionar', component: IngredientesDetalhesComponent
+        },
+        {
+          path: ':id', component: IngredientesDetalhesComponent
         }]
-    }]
-}
-]
+      }]
+    }
+  ]
 ;
 
 @NgModule({

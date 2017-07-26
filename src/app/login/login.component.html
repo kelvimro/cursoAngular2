@@ -8,8 +8,8 @@
   }
 </style>
 
-<div class="container">
-  <div style="background-color:red" [hidden]="loginResult">
+<div class="container" >
+  <div class="alert alert-danger" *ngIf="email.invalid && email.touched">
     <h3>Login ou senha inválidos. </h3>
   </div>
   <h1>Login Usuario</h1>
@@ -19,14 +19,15 @@
     <div class="form-group">
       <label for="nome">Name</label>
       <input type="text" class="form-control" id="nome" required
-             formControlName="nome">
+             formControlName="nome" name="nome" #nome >
     </div>
 
     <div class="form-group">
       <label for="senha">Senha</label>
-      <input type="text" class="form-control" id="senha" required
-             formControlName="senha">
+        <input ngModel type="password" class="form-control" id="senha" required
+               formControlName="senha" name="senha" >
     </div>
+    <div>{{ email.className }}</div>
 
     <div class="form-group">
       <label for="sexo">Sexo</label>
