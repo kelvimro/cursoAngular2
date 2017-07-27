@@ -6,7 +6,6 @@ import {NgModule} from '@angular/core';
 import {IngredientesComponent} from './ingredientes.component';
 import {IngredientesListaComponent} from './ingredientes-lista/ingredientes-lista.component';
 import {IngredientesDetalhesComponent} from './ingredientes-detalhes/ingredientes-detalhes.component';
-import {NgForm} from '@angular/forms';
 /**
  * Created by kelvimro on 18/07/17.
  */

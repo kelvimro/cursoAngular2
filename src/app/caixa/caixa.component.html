@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Caixa</h1>
+
+  <form #f="ngForm" name="caixaform" (submit)="onSubmit(f)">
+    <!--####################################################################################-->
+    <div class="form-group"
+         [ngClass]="{
+         'has-error': trocoabertura.invalid && trocoabertura.touched,
+         'has-feedback': trocoabertura.invalid && trocoabertura.touched
+    }">
+      <label class="control-label" for="trocoabertura">Troco</label>
+      <input name="trocoabertura" id="trocoabertura" #trocoabertura="ngModel"
+             ngModel required
+             type="text" class="form-control"
+             placeholder="Troco caixa anterior"
+             aria-describedby="trocoaberturastatus">
+      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+            *ngIf="trocoabertura.invalid && trocoabertura.touched"></span>
+      <span id="trocoaberturastatus" class="sr-only"
+            *ngIf="trocoabertura.invalid && trocoabertura.touched">(remove)</span>
+      <div class="alert alert-danger" role="alert"
+           *ngIf="trocoabertura.invalid && trocoabertura.touched">
+        Troco não foi carregado!
+      </div>
+    </div>
+    <!--####################################################################################-->
+
+    <div class="form-group">
+      <label for="trocodeixado">Troco</label>
+      <input name="trocodeixado" id="trocodeixado" required ngModel
+             type="number" class="form-control"> "Troco deixado para proximo caixa"
+    </div>
+
+
+    <button type="submit" class="btn btn-success"
+            [disabled]="f.invalid">Enviar
+    </button>
+  </form>
+
+  Troco
+  Troco Noite
+  Deposito
+  Cartão Deb.
+  Cartão Cred.
+  Saida 1
+  Saida 2
+  Saida 3
+  Saida 4
+  Med. Pessoa
+
+  <pre>{{ f.valid | json}}</pre>
+  <pre>{{ f.value | json}}</pre>

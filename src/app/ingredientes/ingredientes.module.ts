@@ -17,9 +17,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     IngredientesRoutingModule
   ],
   providers: [IngredientesService],
-  declarations: [IngredientesComponent,
+  declarations: [
+    IngredientesComponent,
     IngredientesListaComponent,
-    IngredientesDetalhesComponent]
+    IngredientesDetalhesComponent
+  ]
 })
 export class IngredientesModule {
 }
