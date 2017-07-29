@@ -1,52 +1,167 @@
 <div class="container">
   <h1>Caixa</h1>
-
+  <!-- col-xs-6	col-sm-6	col-md-6	col-lg-6 -->
   <form #f="ngForm" name="caixaform" (submit)="onSubmit(f)">
+
+    {{ data | date:"dd-mm-yy" }}
+
     <!--####################################################################################-->
-    <div class="form-group"
-         [ngClass]="{
-         'has-error': trocoabertura.invalid && trocoabertura.touched,
-         'has-feedback': trocoabertura.invalid && trocoabertura.touched
+    <div class="form-group">
+      <div class="col-xs-6	col-sm-6	col-md-6	col-lg-6"
+           [ngClass]="{
+         'has-error': fichainicial.invalid && fichainicial.touched,
+         'has-feedback': fichainicial.invalid && fichainicial.touched
     }">
-      <label class="control-label" for="trocoabertura">Troco</label>
-      <input name="trocoabertura" id="trocoabertura" #trocoabertura="ngModel"
-             ngModel required
-             type="text" class="form-control"
-             placeholder="Troco caixa anterior"
-             aria-describedby="trocoaberturastatus">
-      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
-            *ngIf="trocoabertura.invalid && trocoabertura.touched"></span>
-      <span id="trocoaberturastatus" class="sr-only"
-            *ngIf="trocoabertura.invalid && trocoabertura.touched">(remove)</span>
-      <div class="alert alert-danger" role="alert"
-           *ngIf="trocoabertura.invalid && trocoabertura.touched">
-        Troco não foi carregado!
+        <label class="control-label" for="fichainicial">Ficha inicial.</label>
+        <input name="fichainicial" id="fichainicial" #fichainicial="ngModel"
+               ngModel required
+               type="number" class="form-control"
+               placeholder="# da primeira ficha do dia"
+               aria-describedby="fichainicialstatus">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+              *ngIf="fichainicial.invalid && fichainicial.touched"></span>
+        <span id="fichainicialstatus" class="sr-only"
+              *ngIf="fichainicial.invalid && fichainicial.touched">(remove)</span>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="fichainicial.invalid && fichainicial.touched">
+          Primeira ficha é obrigatório!
+        </div>
+      </div>
+      <!--####################################################################################-->
+      <!--####################################################################################-->
+      <div class="col-xs-6	col-sm-6	col-md-6	col-lg-6"
+           [ngClass]="{
+         'has-error': fichafinal.invalid && fichafinal.touched,
+         'has-feedback': fichafinal.invalid && fichafinal.touched
+    }">
+        <label class="control-label" for="fichafinal">Ficha final.</label>
+        <input name="fichafinal" id="fichafinal" #fichafinal="ngModel"
+               ngModel required
+               type="number" class="form-control"
+               placeholder="# da ultima ficha do dia"
+               aria-describedby="fichafinalstatus">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+              *ngIf="fichafinal.invalid && fichafinal.touched"></span>
+        <span id="fichafinalstatus" class="sr-only"
+              *ngIf="fichafinal.invalid && fichafinal.touched">(remove)</span>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="fichafinal.invalid && fichafinal.touched">
+          Ultima ficha é obrigatório!
+        </div>
       </div>
     </div>
     <!--####################################################################################-->
 
+
+    <!--####################################################################################-->
     <div class="form-group">
-      <label for="trocodeixado">Troco</label>
-      <input name="trocodeixado" id="trocodeixado" required ngModel
-             type="number" class="form-control"> "Troco deixado para proximo caixa"
+      <div class="col-xs-6	col-sm-6	col-md-6	col-lg-6"
+           [ngClass]="{
+         'has-error': trocoabertura.invalid && trocoabertura.touched,
+         'has-feedback': trocoabertura.invalid && trocoabertura.touched
+    }">
+        <label class="control-label" for="trocoabertura">Troco de abertura</label>
+        <input name="trocoabertura" id="trocoabertura" #trocoabertura="ngModel"
+               ngModel required readonly
+               type="number" class="form-control"
+               placeholder="Troco caixa anterior"
+               aria-describedby="trocoaberturastatus">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+              *ngIf="trocoabertura.invalid && trocoabertura.touched"></span>
+        <span id="trocoaberturastatus" class="sr-only"
+              *ngIf="trocoabertura.invalid && trocoabertura.touched">(remove)</span>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="trocoabertura.invalid && trocoabertura.touched">
+          Troco não foi carregado!
+        </div>
+      </div>
+
+      <!--####################################################################################-->
+      <!--####################################################################################-->
+      <div class="col-xs-6	col-sm-6	col-md-6	col-lg-6"
+           [ngClass]="{
+         'has-error': trocodeixado.invalid && trocodeixado.touched,
+         'has-feedback': trocodeixado.invalid && trocodeixado.touched
+    }">
+        <label class="control-label" for="trocodeixado">Troco deixado</label>
+        <input name="trocodeixado" id="trocodeixado" #trocodeixado="ngModel"
+               ngModel required
+               type="number" class="form-control"
+               placeholder="Troco a ser deixado para o proximo caixa."
+               aria-describedby="trocodeixadostatus">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+              *ngIf="trocodeixado.invalid && trocodeixado.touched"></span>
+        <span id="trocodeixadostatus" class="sr-only"
+              *ngIf="trocodeixado.invalid && trocodeixado.touched">(remove)</span>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="trocodeixado.invalid && trocodeixado.touched">
+          Troco é obrigatório!
+        </div>
+      </div>
+    </div>
+    <!--####################################################################################-->
+    <!--####################################################################################-->
+    <div class="form-group">
+      <div class="col-xs-12	col-sm-12	col-md-12	col-lg-12"
+           [ngClass]="{
+         'has-error': retirada.invalid && retirada.touched,
+         'has-feedback': retirada.invalid && retirada.touched
+    }">
+        <label class="control-label" for="retirada">Retirada de Caixa (Depósito)</label>
+        <input name="retirada" id="retirada" #retirada="ngModel"
+               ngModel required
+               type="number" class="form-control"
+               placeholder="Informe o valor a ser retirado"
+               aria-describedby="retiradastatus">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+              *ngIf="retirada.invalid && retirada.touched"></span>
+        <span id="retiradastatus" class="sr-only"
+              *ngIf="retirada.invalid && retirada.touched">(remove)</span>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="retirada.invalid && retirada.touched">
+          Retirada é obrigatório!
+        </div>
+      </div>
+    </div>
+    <!--####################################################################################-->
+    <!--####################################################################################-->
+    <div class="form-group">
+      <div class="col-xs-6	col-sm-6	col-md-6	col-lg-6">
+        <label class="control-label" for="cartaodebito">Entrada cartão débito.</label>
+        <input name="cartaodebito" id="cartaodebito" #cartaodebito="ngModel"
+               ngModel
+               type="number" class="form-control"
+               placeholder="Informe o valor de débito rescebido."
+               aria-describedby="cartaodebitostatus">
+
+      </div>
+      <!--####################################################################################-->
+      <!--####################################################################################-->
+      <div class="col-xs-6	col-sm-6	col-md-6	col-lg-6">
+        <label class="control-label" for="cartaocredito">Entrada cartão crédito.</label>
+        <input name="cartaocredito" id="cartaocredito" #cartaocredito="ngModel"
+               ngModel
+               type="number" class="form-control"
+               placeholder="Informe o valor de crédito rescebido."
+               aria-describedby="cartaocreditostatus">
+
+      </div>
+    </div>
+    <!--####################################################################################-->
+
+
+    <div class="center-block col-xs-12	col-sm-12	col-md-12	col-lg-12">
+      <button type="submit" class="btn btn-success"
+              [disabled]="f.invalid">Enviar
+      </button>
     </div>
 
-
-    <button type="submit" class="btn btn-success"
-            [disabled]="f.invalid">Enviar
-    </button>
   </form>
+</div>
 
-  Troco
-  Troco Noite
-  Deposito
-  Cartão Deb.
-  Cartão Cred.
-  Saida 1
-  Saida 2
-  Saida 3
-  Saida 4
-  Med. Pessoa
+saidas
 
+<div>
   <pre>{{ f.valid | json}}</pre>
   <pre>{{ f.value | json}}</pre>
+</div>
