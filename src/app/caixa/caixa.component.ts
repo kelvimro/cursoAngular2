@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Diacaixa} from "../models/diacaixa";
+import {Diacaixa} from '../models/diacaixa';
+import {CaixaService} from './caixa.service';
 
 @Component({
   selector: 'kr-caixa',
@@ -8,13 +9,14 @@ import {Diacaixa} from "../models/diacaixa";
 })
 export class CaixaComponent implements OnInit {
   data: Date;
-  caixa: Diacaixa;
+  caixas: Diacaixa[];
 
-  constructor() {
+  constructor(private caixaService: CaixaService) {
     this.data = new Date();
   }
 
   ngOnInit() {
+    this.caixas = this.caixaService.retornaCaixas()
   }
 
 }
